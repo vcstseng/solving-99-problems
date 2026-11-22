@@ -2,7 +2,8 @@ const toc = document.querySelector('.case-toc');
 const shell = document.querySelector('.toc-shell');
 const mobile = matchMedia('(max-width: 760px)');
 const links = [...toc.querySelectorAll('a')];
-const targets = links.map(link => document.getElementById(link.hash.slice(1))).filter(Boolean);
+const targetId = link => decodeURIComponent(link.hash.slice(1));
+const targets = links.map(link => document.getElementById(targetId(link))).filter(Boolean);
 const groups = [...toc.querySelectorAll('[data-toc-group]')];
 let currentId;
 let framePending = false;
@@ -25,7 +26,7 @@ function updatePosition() {
   for (const group of groups) group.classList.toggle('is-active', group.dataset.tocGroup === section);
   for (const item of toc.querySelectorAll('.is-current-branch')) item.classList.remove('is-current-branch');
   for (const link of links) {
-    if (link.hash === '#' + currentId) {
+    if (targetId(link) === currentId) {
       link.setAttribute('aria-current', 'location');
       let item = link.closest('li');
       while (item && toc.contains(item)) {

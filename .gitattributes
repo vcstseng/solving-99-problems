@@ -1,3 +1,4 @@
 * text=auto eol=lf
 src/content/articles/*.md -text
 src/content/l2/*.md -text
+src/content/l3/*.md -text

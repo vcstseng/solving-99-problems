@@ -8,6 +8,7 @@
     "dev": "eleventy --serve",
     "build": "eleventy",
     "sync:l2": "node scripts/sync-l2.mjs",
+    "sync:l3": "node scripts/sync-l3.mjs",
     "test": "node --test"
   },
   "engines": {
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.8",
+    "@mermaid-js/tiny": "11.12.3",
     "markdown-it": "^14.3.3"
   }
 }
