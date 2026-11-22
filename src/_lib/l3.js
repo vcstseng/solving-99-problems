@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it';
 
 // Preserve the source document; public labels are localized only at render time.
 const publicReplacements = [
+  ['原始 L3', '原始工程文件'],
   ['網站 L3 技術深讀', '網站技術深讀'], ['可存取的 L4 證據', '可存取的原始證據'],
   ['對應 L4 的原始資料入口', '原始資料入口'], ['L4 上線時', '原始證據公開時'], ['此 L3 是', '本文是'],
   ['Engineering Map', '工程流程'], ['Evidence Index', '證據索引'],

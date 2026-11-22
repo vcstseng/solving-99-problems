@@ -31,15 +31,19 @@ test('L3 registry publishes only CS07 and keeps identity separate from L2 presen
   assert.deepEqual(data.map(c => c.id), ['CS07']);
   assert.equal(data[0].url, '/problems/cs07/engineering/');
   assert.equal(data[0].caseUrl, '/problems/cs07/');
-  assert.equal(data[0].title, 'Engineering Investigations：正確政策為何仍產生錯誤回答？');
+  const title = new MarkdownIt().parse(source, {})[1].content.split('｜').slice(1).join('｜');
+  assert.equal(data[0].title, title);
   assert.throws(() => parseL3(source, 'P02'), /ID mismatch/);
 });
 
 test('L3 TOC follows source headings and keeps chapter anchors stable when inserting a subsection', () => {
-  assert.deepEqual(document.sections.map(s => s.id), ['engineering-map', 'investigation-01', 'investigation-02', 'investigation-03', 'investigation-04', 'investigation-05', 'evidence-index']);
-  const changed = parseL3(source.replace('### Case Q03', '### 新增小節\n\n測試段落。\n\n### Case Q03'), 'CS07');
+  const raw = parseL3(source, 'CS07', { publicLabels:false });
+  const headings = [...source.matchAll(/^## (.+)$/gm)].map(m => m[1].trim());
+  assert.deepEqual(raw.sections.map(s => s.title), headings);
+  const firstSubheading = source.match(/^### (.+)$/m)[0];
+  const changed = parseL3(source.replace(firstSubheading, '### 新增小節\n\n測試段落。\n\n' + firstSubheading), 'CS07');
   assert.deepEqual(changed.sections.map(s => s.id), document.sections.map(s => s.id));
-  assert.ok(changed.sections[3].toc.some(h => h.title === '新增小節'));
+  assert.ok(changed.sections.some(s => s.toc.some(h => h.title === '新增小節')));
   const all = changed.sections.flatMap(s => [s.id, ...s.toc.map(h => h.id)]);
   assert.equal(new Set(all).size, all.length);
 });
@@ -55,10 +59,12 @@ test('unpublished evidence references retain their labels without becoming broke
 test('public labels are Chinese, internal layer numbers are hidden and research facts stay intact', () => {
   const html = document.introductionHtml + document.sections.map(s => s.headingHtml + s.html).join('');
   assert.doesNotMatch(html, /\bL[34]\b|Observed｜|Interpretation｜|Not established｜|Engineering question\./);
-  assert.match(html, /reading-label">已觀察：<\/strong>/);
-  assert.equal(document.displayTitle, '正確政策為何仍產生錯誤回答？');
-  assert.equal(document.sections[3].toc[0].title, '反例 Q03｜十四日政策，回答七日');
-  assert.equal(document.sections.at(-1).title, '證據索引｜原始資料入口');
+  assert.match(html, /reading-label">研究問題：<\/strong>/);
+  const legacy = parseL3(source + '\n\n**Observed｜已觀察。** 標籤相容性測試。\n', 'CS07');
+  assert.match(legacy.sections.at(-1).html, /reading-label">已觀察：<\/strong>/);
+  assert.equal(document.displayTitle, '找到正確政策，為什麼 AI 還是答錯？');
+  assert.ok(document.sections.some(s => s.toc.some(h => h.title === 'Q03｜十四日政策，仍回答七日')));
+  assert.ok(document.sections.at(-1).toc.some(h => h.title === '研究資料與公開範圍'));
   const raw = parseL3(source, 'CS07', { publicLabels:false });
   const text = item => item.introductionHtml + item.sections.map(s => s.headingHtml+s.html).join('');
   assert.deepEqual(text(document).match(/\d+(?:[./]\d+)?%?/g), text(raw).replace(/\bL[34]\b/g, '').match(/\d+(?:[./]\d+)?%?/g));
