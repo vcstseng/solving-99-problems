@@ -4,7 +4,6 @@ import { parseL2 } from "../_lib/l2.js";
 const read = (path) => fs.readFileSync(new URL(path, import.meta.url), "utf8");
 const definitions = JSON.parse(read("./problems.json"));
 const metadata = JSON.parse(read("./researchMetadata.json"));
-const detailRegistry = JSON.parse(read("./l2Registry.json"));
 const palettes = {
   "銷售": ["#ae3738", "#ffffff"], "行銷": ["#305bd4", "#ffffff"],
   "財務": ["#268252", "#ffffff"], "人資": ["#76549e", "#ffffff"],
@@ -18,6 +17,7 @@ const palettes = {
 const displayOrder = ["CS07", "P02", "DEV04", "L06", "S01", "CS02", "VER02", "VER06"];
 
 export default function () {
+  const detailRegistry = JSON.parse(read("./l2Registry.json"));
   const problems = definitions.map(p => {
     const actual = metadata[p.id];
     const l2 = detailRegistry[p.id]?.enabled ? parseL2(read(`../content/l2/${detailRegistry[p.id].file}`), p.id) : null;

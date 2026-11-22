@@ -2,11 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { pathToFileURL } from 'node:url';
-import registry from '../src/_data/l2Registry.json' with { type: 'json' };
 import { parseL2 } from '../src/_lib/l2.js';
 
 export function syncL2(sourceDir) {
   if (!sourceDir) throw new Error('Provide --source <L2 Markdown directory> or L2_SOURCE_DIR.');
+  const registry = JSON.parse(fs.readFileSync(new URL('../src/_data/l2Registry.json', import.meta.url), 'utf8'));
   const destination = new URL('../src/content/l2/', import.meta.url);
   const selected = Object.entries(registry).filter(([, entry]) => entry.enabled).map(([id, entry]) => {
     const bytes = fs.readFileSync(path.join(sourceDir, entry.file));

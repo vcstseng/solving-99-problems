@@ -12,11 +12,11 @@ const data = cases();
 const sourceFor = entry => fs.readFileSync(new URL(`../src/content/l2/${entry.sourceFile}`, import.meta.url), "utf8");
 const visible = html => html.replace(/<[^>]*>/g, "").replace(/\s+/g, "");
 
-test("only CS07 and P02 have L2 routes; filenames and display fields do not redefine identity", () => {
-  assert.deepEqual(data.map(d => d.id), ["CS07", "P02"]);
+test("all eight completed cases have L2 routes; filenames and display fields do not redefine identity", () => {
+  assert.deepEqual(data.map(d => d.id).sort(), ["CS02", "CS07", "DEV04", "L06", "P02", "S01", "VER02", "VER06"]);
   assert.equal(registry.VER02.file, "VER2_L2.md");
   assert.equal(registry.VER06.file, "VER6_L2.md");
-  assert.deepEqual(research().problems.filter(p => p.detailUrl).map(p => p.id), ["CS07", "P02"]);
+  assert.deepEqual(research().problems.filter(p => p.detailUrl).map(p => p.id).sort(), data.map(d => d.id).sort());
   assert.equal(data[0].fields["問題分類"], "客戶服務");
   assert.equal(data[0].website.category, "客服");
   assert.equal(data[0].fields["探索狀態"], "已完成");

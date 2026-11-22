@@ -1,10 +1,34 @@
 {
-  "CS07": { "file": "CS07_L2.md", "enabled": true },
-  "P02": { "file": "P02_L2.md", "enabled": true },
-  "CS02": { "file": "CS02_L2.md", "enabled": false },
-  "DEV04": { "file": "DEV04_L2.md", "enabled": false },
-  "L06": { "file": "L06_L2.md", "enabled": false },
-  "S01": { "file": "S01_L2.md", "enabled": false },
-  "VER02": { "file": "VER2_L2.md", "enabled": false },
-  "VER06": { "file": "VER6_L2.md", "enabled": false }
+  "CS07": {
+    "file": "CS07_L2.md",
+    "enabled": true
+  },
+  "P02": {
+    "file": "P02_L2.md",
+    "enabled": true
+  },
+  "CS02": {
+    "file": "CS02_L2.md",
+    "enabled": true
+  },
+  "DEV04": {
+    "file": "DEV04_L2.md",
+    "enabled": true
+  },
+  "L06": {
+    "file": "L06_L2.md",
+    "enabled": true
+  },
+  "S01": {
+    "file": "S01_L2.md",
+    "enabled": true
+  },
+  "VER02": {
+    "file": "VER2_L2.md",
+    "enabled": true
+  },
+  "VER06": {
+    "file": "VER6_L2.md",
+    "enabled": true
+  }
 }

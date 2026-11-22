@@ -1,9 +1,9 @@
 import fs from "node:fs";
-import registry from "./l2Registry.json" with { type: "json" };
 import research from "./research.js";
 import { parseL2 } from "../_lib/l2.js";
 
 export default function () {
+  const registry = JSON.parse(fs.readFileSync(new URL("./l2Registry.json", import.meta.url), "utf8"));
   const problems = research().problems;
   return Object.entries(registry).filter(([, entry]) => entry.enabled).map(([id, entry]) => {
     const source = fs.readFileSync(new URL(`../content/l2/${entry.file}`, import.meta.url), "utf8");

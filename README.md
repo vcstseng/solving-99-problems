@@ -1,6 +1,6 @@
 # Solving 99 Problems｜AI 解題實錄
 
-獨立的靜態網站專案。首頁包含專案介紹、案例卡片及可搜尋、組合篩選、分頁的 99 題問題庫。本輪 L2 僅實作 CS07，並以 P02 驗證同一版型的長文與表格；其餘案例與 L3 尚未建立。CS07／P02 使用同一套 L2 Renderer，供內容與 UI Review。
+獨立的靜態網站專案。首頁包含專案介紹、案例卡片及可搜尋、組合篩選、分頁的 99 題問題庫。已完成八個 L2：CS07、P02、CS02、DEV04、L06、S01、VER02、VER06，全部使用同一套 Markdown Renderer。L3 尚未建立。Hero 以領域色塊中的完整標題為主，識別碼縮小，右側呈現 Metadata。
 
 ## 開發與建置
 
@@ -13,13 +13,13 @@ npm test
 npm run build
 ```
 
-開啟開發伺服器印出的網址，通常為 `http://localhost:8080`。正式靜態輸出為 `_site/`。案例網址為 `/problems/cs07/` 與 `/problems/p02/`。
+開啟開發伺服器印出的網址，通常為 `http://localhost:8080`。正式靜態輸出為 `_site/`。案例網址使用原始 ID 小寫，例如 `/problems/cs07/`、`/problems/p02/`、`/problems/ver02/`。
 
 ## 檔案結構
 
 ```text
 src/pages/index.njk                 首頁
-src/pages/case.njk                  兩個案例共用的 L2 版型
+src/pages/case.njk                  八個案例共用的 L2 版型
 src/_lib/l2.js                      Markdown 解析、章節與目錄產生
 src/_data/l2Registry.json           明確 ID／檔名對應及啟用範圍
 src/_data/l2Cases.js                原文件欄位與網站顯示欄位分開整合
@@ -48,9 +48,9 @@ npm run sync:l2 -- --source "<L2 Markdown directory>"
 npm run build
 ```
 
-目前本機已用忽略版本控制的 `l2-source.local` 指定研究專案的 L2 資料夾；也可設定 `L2_SOURCE_DIR` 覆蓋此來源。Eleventy 會監看該資料夾，在建置前同步最新 CS07／P02 原檔；僅寫入網站副本。沒有設定本機來源時，開發與 GitHub 建置皆只使用本專案副本，不依賴任何外部本機路徑。直接更新 `src/content/l2/` 也會觸發重新建置；若從研究來源更新，請使用同步命令以一併更新原檔校驗碼。
+目前本機已用忽略版本控制的 `l2-source.local` 指定研究專案的 L2 資料夾；也可設定 `L2_SOURCE_DIR` 覆蓋此來源。Eleventy 會監看該資料夾，在建置前同步最新八份 L2 原檔；僅寫入網站副本。沒有設定本機來源時，開發與 GitHub 建置皆只使用本專案副本，不依賴任何外部本機路徑。直接更新 `src/content/l2/` 也會觸發重新建置；若從研究來源更新，請使用同步命令以一併更新原檔校驗碼。
 
-`l2Registry.json` 明確指定 `VER02 → VER2_L2.md`、`VER06 → VER6_L2.md`；不由檔名猜 ID。只有 enabled 的 CS07／P02 產生頁面，並核對文件標題內的原始 ID。原文件分類、研究狀態與案例類型保留於原始欄位。首頁與 L2 共用網站分類及「已完成探索／尚待探索」標籤；L2 額外顯示原文件分類、原始研究狀態與人工驗收 Pending，不將探索完成當作人工驗收通過。啟用 L2 的案例正式標題直接取自 L2 Markdown；首頁短摘要集中於 `researchMetadata.json`，不截取 L2 前 N 字，也不在執行時生成內容。
+`l2Registry.json` 明確指定 `VER02 → VER2_L2.md`、`VER06 → VER6_L2.md`；不由檔名猜 ID。目前八個案例均為 enabled，依對應產生頁面，並核對文件標題內的原始 ID。原文件分類、研究狀態與案例類型保留於原始欄位。首頁與 L2 共用網站分類及「已完成探索／尚待探索」標籤；L2 額外顯示原文件分類、原始研究狀態與人工驗收 Pending，不將探索完成當作人工驗收通過。啟用 L2 的案例正式標題直接取自 L2 Markdown；首頁短摘要集中於 `researchMetadata.json`，不截取 L2 前 N 字，也不在執行時生成內容。
 
 Anchor 採穩定的章節編號或語意名稱，例如 `business-01`、`business-takeaways`、`technical-methods`、`technical-tools`、`technical-workflow`、`technical-takeaways`。H4 插入不改變主要 Anchor；同名標題會產生唯一 ID。TOC 僅列主要章節與 H3，H4 仍有可直接連結的 Anchor。
 

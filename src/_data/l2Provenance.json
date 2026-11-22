@@ -6,5 +6,29 @@
   "P02": {
     "file": "P02_L2.md",
     "sha256": "1e3ffb209ae8c875bdd36911ea65f78c517a4a50610f8cb16d6b2d7cb334344b"
+  },
+  "CS02": {
+    "file": "CS02_L2.md",
+    "sha256": "561882063ed01a74b340ff1b6396c57fc2213306eacc17977722a25e02cc1400"
+  },
+  "DEV04": {
+    "file": "DEV04_L2.md",
+    "sha256": "9b20f72b222e4281dd6e30d1345d240b1cea79b41bdbe752dc7a33b924fbc6ac"
+  },
+  "L06": {
+    "file": "L06_L2.md",
+    "sha256": "7b86ed7a0189ec0bb14709ed440b7618e980e437fd0f672cc7dd2f5131ef1c39"
+  },
+  "S01": {
+    "file": "S01_L2.md",
+    "sha256": "e33db46ca1a2affbafba2eb602b1ee3c093ec65e6e99edf71704687e5a9bb27b"
+  },
+  "VER02": {
+    "file": "VER2_L2.md",
+    "sha256": "818187ec47d5aa8ec698e63ae361d929522a12a0846391a3414f8d51ad29d3d0"
+  },
+  "VER06": {
+    "file": "VER6_L2.md",
+    "sha256": "dbf52ee1836b27c3d9a38e3c86d28bdb2633361c0ff46ff4f99acc70ea0437f0"
   }
 }
