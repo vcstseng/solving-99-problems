@@ -1,6 +1,6 @@
 # Solving 99 Problems｜AI 解題實錄
 
-獨立的網站呈現專案。目前只有繁體中文首頁：專案介紹、精選案例、更多案例，以及可搜尋、篩選與分頁的 99 題問題庫。首頁是未來第二層內容的入口，不顯示 Article 全文。列表一次只展開一題：已完成題目顯示完整技術／工具，尚待探索題目顯示既有問題描述與商業情境。第二層尚未建立，所有「查看完整案例」入口暫時隱藏，沒有假連結，也未發布。
+獨立的網站呈現專案。目前只有繁體中文首頁：專案介紹、精選案例、更多案例，以及可搜尋、篩選與分頁的 99 題問題庫。首頁是未來第二層內容的入口，不顯示 Article 全文。列表一次只展開一題：已完成題目顯示完整技術／工具，尚待探索題目顯示既有問題描述與商業情境。第二層尚未建立，所有「查看完整案例」入口暫時隱藏，沒有假連結。
 
 ## 開發與建置
 
@@ -50,9 +50,9 @@ python scripts/import_research.py --source <research-project-directory>
 
 匯入後另行核對技術、工具與證據，不依文章提到的工具名稱自動認定實作。`npm test` 核對 99 個唯一 ID、10+6 類別、8/91 數量、原文章校驗碼、實績篩選及分頁邊界。
 
-## 未來 GitHub Pages
+## GitHub Pages
 
-原始碼儲存庫為 [vcstseng/solving-99-problems](https://github.com/vcstseng/solving-99-problems)。尚未建立部署流程或啟用 GitHub Pages；確認部署網址後，可透過 GitHub Actions 執行 `npm ci`、`npm test`、建置並上傳 `_site/`。
+原始碼儲存庫為 [vcstseng/solving-99-problems](https://github.com/vcstseng/solving-99-problems)。網站網址為 https://vcstseng.github.io/solving-99-problems/ 。`.github/workflows/pages.yml` 在推送至 `main` 或手動執行時，以 GitHub Actions 安裝依賴、測試、建置並部署 `_site/`。部署使用短期內建憑證，不需要另存金鑰。
 
 專案子路徑可使用：
 
