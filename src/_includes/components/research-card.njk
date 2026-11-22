@@ -1,0 +1,6 @@
+{% macro metadata(label, items, id, full=false) %}
+<div class="metadata-row"><dt>{{ label }}</dt><dd>{% for item in items %}{% if full or loop.index <= 3 %}<span class="tag">{{ item | escape }}</span>{% endif %}{% endfor %}{% if not full and items.length > 3 %}<details class="tag-extra"><summary aria-label="{{ id }} {{ label }}：另外 {{ items.length - 3 }} 項">+{{ items.length - 3 }}</summary><span class="extra-items">{% for item in items %}{% if loop.index > 3 %}<span class="tag">{{ item | escape }}</span>{% endif %}{% endfor %}</span></details>{% endif %}</dd></div>
+{% endmacro %}
+{% macro card(problem, featured) %}
+<article class="research-card{% if featured %} feature-card{% endif %}" style="--domain-color:{{ problem.color }};--domain-foreground:{{ problem.foreground }}"><div class="card-title-block"><div class="card-kicker"><span>{{ problem.domain | escape }}</span><span class="card-id">{{ problem.id }}</span></div><h3>{{ problem.title | escape }}</h3></div><div class="card-information"><p class="card-preview">{{ problem.preview | escape }}</p><dl class="card-metadata">{{ metadata("核心技術", problem.technologies, problem.id) }}{{ metadata("實作工具", problem.tools, problem.id) }}</dl><div class="card-footer"><span class="complete">已完成探索</span></div></div></article>
+{% endmacro %}

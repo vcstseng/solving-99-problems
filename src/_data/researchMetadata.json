@@ -1,0 +1,46 @@
+{
+  "CS07": {
+    "preview": "公司政策已經寫得清楚，AI 也找到了正確文件，為什麼回答仍然用錯期限，甚至先答應需要主管批准的退款？這次研究把政策檢索與回答生成分開檢查，觀察到附上來源與標記待覆核，都不保證回答真正遵守政策。當 AI 代表公司面對客戶時，還有哪些環節需要確認？",
+    "technologies": ["RAG", "語意檢索", "生成控制", "來源核對"],
+    "tools": ["Python", "Ollama", "Qwen3", "BGE-M3", "scikit-learn", "NumPy"],
+    "evidence": ["cases/problem_CS07/CS07_ENGINEERING_DEEP_DIVE.md#2", "cases/problem_CS07/src/baseline.py", "cases/problem_CS07/src/run_round2.py"]
+  },
+  "P02": {
+    "preview": "報價分散在 PDF、Excel 與 Email，讀出價格只是比價的起點。沒有提供運費，能不能當成免運？AI 提出的數字找不到來源時，流程又該怎麼繼續？這次研究比較傳統規則與 AI 加來源核對，發現抽取資料的成績，和真正完成比價的比例，可能是兩回事。",
+    "technologies": ["資料抽取", "來源核對", "規則驗證"],
+    "tools": ["Python", "Ollama", "Qwen3", "pypdf", "openpyxl", "reportlab", "unittest", "Artifact Tool"],
+    "evidence": ["cases/problem_P02/README.md:31", "cases/problem_P02/P02_ENGINEERING_DEEP_DIVE.md"]
+  },
+  "DEV04": {
+    "preview": "AI 寫完程式，也附上全部通過的測試，看起來已經可以放心。但故意把程式改錯後，原有測試竟漏掉一個違反規格的版本，而且不是因為沒有測到那項功能。研究發現，用來判斷對錯的預期答案也跟著資料一起改變了。這讓我們回頭問：測試本身，真的能發現錯誤嗎？",
+    "technologies": ["變異測試", "單元測試", "預期值驗證"],
+    "tools": ["Python", "pytest"],
+    "evidence": ["cases/problem_DEV04/README.md:21", "cases/problem_DEV04/DEV04_ENGINEERING_DEEP_DIVE.md", "cases/problem_DEV04/src/experiment.py"]
+  },
+  "L06": {
+    "preview": "合約簽完以後，公司到底承諾了什麼，期限與例外又在哪裡？AI 與傳統規則在這批短合約中都拿到滿分，但正式測試前，評分規則反而先被發現有缺陷。研究讓我們看見：文字找得到來源，不代表完整意思一定保留下來；要相信義務清單，也得先確認答案如何被判定為正確。",
+    "technologies": ["規則抽取", "義務辨識", "欄位驗證", "來源核對"],
+    "tools": ["Python"],
+    "evidence": ["cases/problem_L06/README.md:19", "cases/problem_L06/L06_ENGINEERING_DEEP_DIVE.md", "cases/problem_L06/src/core.py"]
+  },
+  "CS02": {
+    "technologies": ["文字分類", "TF-IDF", "Logistic Regression", "規則路由"],
+    "tools": ["Python", "scikit-learn", "pytest"],
+    "evidence": ["cases/problem_CS02/CS02_ENGINEERING_DEEP_DIVE.md:40", "cases/problem_CS02/src/run_experiment.py"]
+  },
+  "S01": {
+    "technologies": ["需求預測", "特徵工程", "梯度提升樹", "時間序列回測"],
+    "tools": ["Python", "scikit-learn", "pandas", "NumPy", "pytest", "joblib"],
+    "evidence": ["cases/problem_S01/S01_ENGINEERING_DEEP_DIVE.md", "cases/problem_S01/src/forecast.py", "cases/problem_S01/tests/test_forecast.py"]
+  },
+  "VER02": {
+    "technologies": ["規則驗證", "指標核對", "故障注入"],
+    "tools": ["Python", "SQLite", "Decimal"],
+    "evidence": ["cases/problem_VER02/src/worker.py", "cases/problem_VER02/src/verify.py", "cases/problem_VER02/src/run_round2.py"]
+  },
+  "VER06": {
+    "technologies": ["機率校準", "Random Forest", "Bootstrap", "門檻分析"],
+    "tools": ["Python", "scikit-learn", "pandas", "NumPy", "SciPy", "joblib", "pytest", "Matplotlib"],
+    "evidence": ["cases/problem_VER06/VER06_ENGINEERING_DEEP_DIVE.md", "cases/problem_VER06/src/calibration.py", "cases/problem_VER06/src/plot_results.py"]
+  }
+}

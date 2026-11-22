@@ -1,0 +1,40 @@
+{
+  "workbook": "99_Problems_AI淨價值審查_v4.xlsx",
+  "sheet": "原始題庫",
+  "sha256": "00711609a66fdcb9d4355485f8c5252925138b917f0195f8948ed6b10b31a7c3",
+  "statusBasis": "Human 指定的八篇 revised Articles；僅轉換網站顯示名稱，不代表部署或驗收。",
+  "articles": {
+    "CS07": {
+      "source": "articles/revised/problem_CS07.md",
+      "sha256": "45cb8f812b05cd36d98cddc17c68e19905fc8e8798df2845c27b1d77125e7955"
+    },
+    "P02": {
+      "source": "articles/revised/problem_P02.md",
+      "sha256": "35c6b81d56c7b5f51c5a332e7624114f336e797b34c08912cb441ccd2e74594b"
+    },
+    "DEV04": {
+      "source": "articles/revised/problem_DEV04.md",
+      "sha256": "1be8517edd464a71ac41e5af85260d21f5c56c72acd56d3b95baf06c902790d9"
+    },
+    "L06": {
+      "source": "articles/revised/problem_L06.md",
+      "sha256": "034dfe1363cfe32fa16446ad4ebc3e2c4a72034a992c4869f2eae9d34ecd804e"
+    },
+    "S01": {
+      "source": "articles/revised/problem_S01.md",
+      "sha256": "b6e1786ebf5658d05e0af31874053fd55be7d6986136742311102b7a7897dce2"
+    },
+    "CS02": {
+      "source": "articles/revised/problem_CS02.md",
+      "sha256": "7dd2694b346ddfb6f7774721215be64468f85b55e99eb1bb1020d36c945e1618"
+    },
+    "VER02": {
+      "source": "articles/revised/problem_VER02.md",
+      "sha256": "20b47681b3e146c867bac0768387d1862f694dc323ac43790efcdd27b58bbc90"
+    },
+    "VER06": {
+      "source": "articles/revised/problem_VER06.md",
+      "sha256": "b9849736b8a6332a1e1e56e0b2a58445fb276996b6e2255592a102a8f390bd6d"
+    }
+  }
+}
