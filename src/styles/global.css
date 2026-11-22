@@ -60,6 +60,8 @@ h1 { font-size: clamp(2.7rem, 4vw, 3.5rem); line-height: 1.35; letter-spacing: -
 .card-kicker { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; font-size: .875rem; }
 .card-id { font: 1rem/1.5 Georgia, serif; }
 .card-title-block h3 { font-size: 1.6rem; margin-top: 24px; line-height: 1.45; overflow-wrap: break-word; }
+.card-detail-title { color: inherit; text-decoration: none; }
+.card-detail-title:hover { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; }
 .card-information { display: flex; flex-direction: column; flex: 1; padding: 21px 19px 0; }
 .card-preview { font-size: 1rem; line-height: 1.9; margin-bottom: 24px; }
 .card-metadata { margin-top: auto; }
@@ -117,6 +119,8 @@ select { appearance: none; padding: 8px 28px 8px 10px; background-image: url("da
 .problem-definition dl > div { margin-bottom: 22px; }
 .problem-definition dt { font-size: .875rem; font-weight: 600; color: var(--muted); margin-bottom: 7px; }
 .close-panel { display: block; border: 1px solid var(--rule); padding: 8px 18px; margin: 22px auto 0; font-size: .875rem; }
+.panel-actions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 25px; margin-top: 22px; }
+.panel-actions .close-panel { margin: 0; }
 .pagination-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 23px; font-size: .875rem; }
 .pagination { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .pagination button { min-width: 36px; min-height: 36px; padding: 4px 8px; border: 1px solid transparent; font-size: .875rem; }

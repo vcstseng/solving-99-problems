@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="99 個商業問題，AI 能解決多少？從商業問題出發，探索 AI 解法，透過實作與測試，看看哪些真的有效。">
+    <meta name="description" content="{{ description or '99 個商業問題，AI 能解決多少？從商業問題出發，探索 AI 解法，透過實作與測試，看看哪些真的有效。' | escape }}">
     <title>{{ title | escape }}</title>
     <link rel="stylesheet" href="/styles/global.css">
+    {% if detailPage %}<link rel="stylesheet" href="/styles/problem-detail.css">{% endif %}
   </head>
   <body id="top">
     <a class="skip-link" href="#main">跳至主要內容</a>

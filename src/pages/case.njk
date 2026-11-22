@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: l2Cases
+  size: 1
+  alias: case
+permalink: "{{ case.url }}"
+eleventyComputed:
+  title: "{{ case.fullTitle }}｜Solving 99 Problems"
+  description: "{{ case.fullTitle }}：案例概覽、商業視角、技術視角與案例範圍。"
+detailPage: true
+---
+{% macro tocItems(items) %}{% for item in items %}<li><a href="#{{ item.id }}">{{ item.title | escape }}</a>{% if item.children.length %}<ol class="toc-subchildren">{{ tocItems(item.children) }}</ol>{% endif %}</li>{% endfor %}{% endmacro %}
+<header class="site-header wrap"><a class="wordmark" href="/">Solving 99 Problems <span>AI 解題實錄</span></a><nav aria-label="主要導覽"><a href="/#library">問題庫</a><a href="/#featured">精選案例</a><a href="/#about">關於專案</a></nav></header>
+<main class="detail-page" id="main" style="--domain-color:{{ case.website.color }};--domain-foreground:{{ case.website.foreground }}">
+  <div class="wrap detail-breadcrumb"><a href="/">首頁</a><span aria-hidden="true">/</span><a href="/#featured">案例</a><span aria-hidden="true">/</span><span aria-current="page">{{ case.id }}</span></div>
+  <header class="case-hero wrap">
+    <div class="case-cover" aria-hidden="true"><div class="cover-kicker"><span>{{ case.website.category | escape }}</span><span>CASE {{ case.id }}</span></div><span class="cover-id">{{ case.id }}</span></div>
+    <div class="case-identity"><p class="eyebrow">CASE {{ case.id }}</p><h1 id="case-title"><span class="visually-hidden">{{ case.id }}｜</span>{{ case.title | escape }}</h1><dl class="case-metadata">{% for label, value in case.fields %}<div><dt>{{ label }}</dt><dd>{% if label == "問題分類" %}{{ case.website.category | escape }}{% if value != case.website.category %}<span class="original-metadata">原文件分類：{{ value | escape }}</span>{% endif %}{% elif label == "探索狀態" %}<span class="display-status">{{ case.website.status | escape }}</span><span class="original-metadata">原始研究狀態：{{ value | escape }}</span>{% else %}{{ value | escape }}{% endif %}</dd></div>{% endfor %}{% if case.humanAcceptance == "pending" %}<div><dt>人工驗收</dt><dd>待完成（Pending）</dd></div>{% endif %}</dl></div>
+  </header>
+  <div class="reading-layout wrap">
+    <article class="case-body" aria-labelledby="case-title">{% for section in case.sections %}
+      <section class="case-section{% if section.isView %} case-view{% endif %}" data-case-section="{{ section.key }}" aria-labelledby="{{ section.id }}">
+        {% if section.isView %}<header class="chapter-band">{{ section.headingHtml | safe }}<nav aria-label="{{ section.title | escape }}章節">{% for heading in section.toc %}<a href="#{{ heading.id }}">{{ heading.title | escape }}</a>{% endfor %}</nav></header>{% else %}<header class="plain-section-heading">{{ section.headingHtml | safe }}</header>{% endif %}
+        <div class="section-prose">{{ section.html | safe }}</div>
+      </section>{% endfor %}
+    </article>
+    <aside class="case-sidebar"><details class="toc-shell" open><summary>本頁目錄<span class="toc-chevron" aria-hidden="true"></span></summary><nav class="case-toc" aria-label="本頁目錄"><ol>{% for section in case.sections %}<li class="toc-group" data-toc-group="{{ section.key }}"><a href="#{{ section.id }}" data-section-link="{{ section.key }}">{{ section.title | escape }}</a>{% if section.toc.length %}<ol class="toc-children">{{ tocItems(section.toc) }}</ol>{% endif %}</li>{% endfor %}</ol></nav></details></aside>
+  </div>
+  <div class="detail-return wrap"><a class="text-link" href="/#library">回到 99 題問題庫</a><a class="text-link" href="#top">回到頁首</a></div>
+</main>
+<footer class="site-footer wrap"><div><p class="footer-brand">Solving 99 Problems</p><p>AI 解題實錄</p></div><p>{{ case.id }} · {{ case.fields["問題分類"] | escape }}</p></footer>
+<script type="module" src="/assets/problem-detail.js"></script>

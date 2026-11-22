@@ -1,8 +1,10 @@
 import fs from "node:fs";
+import { parseL2 } from "../_lib/l2.js";
 
 const read = (path) => fs.readFileSync(new URL(path, import.meta.url), "utf8");
 const definitions = JSON.parse(read("./problems.json"));
 const metadata = JSON.parse(read("./researchMetadata.json"));
+const detailRegistry = JSON.parse(read("./l2Registry.json"));
 const palettes = {
   "銷售": ["#ae3738", "#ffffff"], "行銷": ["#305bd4", "#ffffff"],
   "財務": ["#268252", "#ffffff"], "人資": ["#76549e", "#ffffff"],
@@ -18,9 +20,12 @@ const displayOrder = ["CS07", "P02", "DEV04", "L06", "S01", "CS02", "VER02", "VE
 export default function () {
   const problems = definitions.map(p => {
     const actual = metadata[p.id];
+    const l2 = detailRegistry[p.id]?.enabled ? parseL2(read(`../content/l2/${detailRegistry[p.id].file}`), p.id) : null;
     const article = p.completed ? read(`../content/articles/problem_${p.id}.md`) : "";
-    const title = article ? article.replace(/^\uFEFF/, "").split(/\r?\n/)[0].replace(/^#\s+/, "") : p.originalName;
-    return { ...p, title, preview: actual?.preview || p.businessProblem,
+    const articleTitle = article ? article.replace(/^\uFEFF/, "").split(/\r?\n/)[0].replace(/^#\s+/, "") : "";
+    const title = l2?.title || articleTitle || p.originalName;
+    return { ...p, title, articleTitle, preview: actual?.preview || p.businessProblem,
+      detailUrl: detailRegistry[p.id]?.enabled ? `/problems/${p.id.toLowerCase()}/` : null,
       technologies: actual?.technologies || [], tools: actual?.tools || [],
       color: palettes[p.domain][0], foreground: palettes[p.domain][1],
       status: p.completed ? "已完成探索" : "尚待探索" };

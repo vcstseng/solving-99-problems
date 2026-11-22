@@ -26,7 +26,7 @@ test("copied articles retain original bytes and original titles", () => {
   for (const p of records.filter(p => p.completed)) {
     const bytes = fs.readFileSync(new URL(`../src/content/articles/problem_${p.id}.md`, import.meta.url));
     assert.equal(crypto.createHash("sha256").update(bytes).digest("hex"), provenance.articles[p.id].sha256);
-    assert.equal(p.title, bytes.toString("utf8").replace(/^\uFEFF/, "").split(/\r?\n/)[0].replace(/^#\s+/, ""));
+    assert.equal(p.articleTitle, bytes.toString("utf8").replace(/^\uFEFF/, "").split(/\r?\n/)[0].replace(/^#\s+/, ""));
   }
 });
 
