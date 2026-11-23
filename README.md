@@ -67,6 +67,12 @@ npm run dev
 
 可用不進版本控制的 `l3-source.local` 或 `L3_SOURCE_DIR` 指定本機來源，開發時自動同步。沒有本機設定時，建置使用專案內副本。Mermaid 使用本機提供的 `@mermaid-js/tiny` 渲染 SVG，支援放大；載入失敗或停用 JavaScript 時仍保留原始碼。尚未公開的研究相對路徑不產生 L4 連結。啟用 JavaScript 時目錄只展開目前章節的小節；停用時全部目錄仍可使用。P02 的原始 TeX 公式由 KaTeX 在建置時轉成 HTML／MathML，字型與樣式由網站本身提供，不呼叫外部服務。八個案例共用同一版型，支援不同章節數、表格與程式碼。
 
+## AI 管理 AI 框架頁
+
+`/ai-managing-ai/` 使用 `src/content/framework/ai-managing-ai.md` 的完整內容。更新該 Markdown 即會重新產生章節、表格、階段／主題及目錄；不在元件內另外維護一套框架文案。四個面向以響應式 2×2 區塊呈現，五種角色另有非線性的關係示意；頁面不放案例。
+
+全站頁首共用 `src/_includes/components/site-header.njk`；「AI 管理 AI」連到框架頁，首頁原有精選案例區塊保留。桌面使用單一 Sticky 目錄，手機目錄可收合，選單開啟期間保留原閱讀章節。
+
 ## 原始資料
 
 題庫來自 `99_Problems_AI淨價值審查_v4.xlsx` 的「原始題庫」：10 個商業領域 57 題，6 個 AI 分類 42 題，共 99 個唯一 ID；八個完成項目依既有 revised Articles 對應。首頁實際技術與工具維持共用的 `researchMetadata.json`，不把候選方案加入實績篩選。L2 正文使用已確認的 L2 文件，不從其他研究文件重新生成。

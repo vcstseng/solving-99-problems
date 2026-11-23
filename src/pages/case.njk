@@ -11,7 +11,7 @@ eleventyComputed:
 detailPage: true
 ---
 {% macro tocItems(items) %}{% for item in items %}<li><a href="#{{ item.id }}">{{ item.title | escape }}</a>{% if item.children.length %}<ol class="toc-subchildren">{{ tocItems(item.children) }}</ol>{% endif %}</li>{% endfor %}{% endmacro %}
-<header class="site-header wrap"><a class="wordmark" href="/">Solving 99 Problems <span>AI 解題實錄</span></a><nav aria-label="主要導覽"><a href="/#library">問題庫</a><a href="/#featured">精選案例</a><a href="/#about">關於專案</a></nav></header>
+{% include "components/site-header.njk" %}
 <main class="detail-page" id="main" style="--domain-color:{{ case.website.color }};--domain-foreground:{{ case.website.foreground }}">
   <div class="wrap detail-breadcrumb"><a href="/">首頁</a><span aria-hidden="true">/</span><a href="/#featured">案例</a><span aria-hidden="true">/</span><span aria-current="page">{{ case.id }}</span></div>
   <header class="case-hero wrap">

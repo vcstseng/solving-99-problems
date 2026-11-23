@@ -15,6 +15,7 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add("src/content/**");
   eleventyConfig.addWatchTarget("./src/content/l2/");
   eleventyConfig.addWatchTarget("./src/content/l3/");
+  eleventyConfig.addWatchTarget("./src/content/framework/");
   // Optional local authoring source; portable builds use the repository copies.
   const localSource = process.env.L2_SOURCE_DIR || (fs.existsSync("l2-source.local") ? fs.readFileSync("l2-source.local", "utf8").trim() : "");
   if (localSource) {

@@ -2,3 +2,4 @@
 src/content/articles/*.md -text
 src/content/l2/*.md -text
 src/content/l3/*.md -text
+src/content/framework/*.md -text

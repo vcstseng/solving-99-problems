@@ -10,6 +10,9 @@ let framePending = false;
 
 function updatePosition() {
   framePending = false;
+  // Expanding the mobile menu moves the article down. Keep the reader's last
+  // section selected while choosing a link, so nested destinations stay visible.
+  if (mobile.matches && shell.open) return;
   // Include both the document scroll padding and the heading scroll margin,
   // so anchor navigation highlights the destination rather than its predecessor.
   const threshold = (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0)
@@ -53,6 +56,7 @@ function setMode() {
 shell.querySelector('summary').addEventListener('click', event => {
   if (!mobile.matches) event.preventDefault();
 });
+shell.addEventListener('toggle', () => { if (!shell.open) schedulePosition(); });
 for (const link of links) link.addEventListener('click', () => {
   if (mobile.matches) shell.open = false;
 });
