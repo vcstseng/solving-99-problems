@@ -86,5 +86,7 @@ export function parseFramework(source) {
     return `<div class="framework-conditions">${parts.map(items => `<section>${render(items)}</section>`).join('')}</div>`;
   };
   return { title, englishTitle, introductionHtml:render(introduction), sections:sections.map(s => ({ ...s,
+    tocTitle: ['recursive-governance', 'trust-dimensions', 'governance-roles'].includes(s.key)
+      ? s.title.replace(/（[^）]*）$/, '') : s.title,
     headingHtml:render(s.headingTokens), html:renderSection(s) })) };
 }

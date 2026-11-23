@@ -22,15 +22,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 ::selection { background: #d2e7df; }
 h1, h2, h3, h4, p, dl, dd { margin: 0; }
 h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.4; }
-.wrap { width: min(1224px, calc(100% - 80px)); margin-inline: auto; }
+.wrap { width: calc(100% - 96px); max-width: 1224px; margin-inline: auto; }
 .skip-link { position: absolute; top: -100px; left: 20px; z-index: 5; background: var(--ink); color: white; padding: 10px 15px; }
 .skip-link:focus { top: 10px; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 23px 0 26px; position: relative; }
 .site-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(to right, #c12b72 0% 16.666%, #305bd4 16.666% 33.333%, #098c87 33.333% 50%, #5d498c 50% 66.666%, #e5a10c 66.666% 83.333%, #c74620 83.333% 100%); }
 .wordmark { font: 1.75rem/1.2 Georgia, serif; text-decoration: none; min-width: 0; text-wrap: balance; }
 .wordmark span { display: inline-block; margin-left: 16px; font: .875rem/1.5 var(--sans); color: var(--muted); letter-spacing: .08em; vertical-align: middle; }
-.site-header nav { display: flex; flex-shrink: 0; gap: 28px; font-size: .875rem; }
-.site-header nav a { text-decoration: none; padding-block: 8px; }
+.site-header nav { display: flex; flex-shrink: 0; flex-wrap: wrap; max-width: 100%; gap: 12px 28px; font-size: .875rem; }
+.site-header nav a { text-decoration: none; padding-block: 8px; white-space: nowrap; }
 .site-header nav a:hover { text-decoration: underline; }
 .site-header nav a[aria-current="page"] { color: var(--teal); text-decoration: underline; text-decoration-thickness: 2px; }
 .intro { padding-block: 45px 0; }
@@ -141,7 +141,7 @@ select { appearance: none; padding: 8px 28px 8px 10px; background-image: url("da
 .site-footer { display: flex; justify-content: space-between; gap: 25px; border-top: 1px solid var(--ink); padding-block: 25px 35px; align-items: center; color: var(--muted); font-size: .8125rem; }
 .footer-brand { color: var(--ink); font: 1.2rem/1.4 Georgia, serif; margin-bottom: 5px; }
 @media (max-width: 1150px) {
-  .wrap { width: calc(100% - 56px); }
+  .wrap { width: calc(100% - 64px); }
   .intro-grid { gap: 30px; }
   h1 { font-size: 2.9rem; }
   .domain-grid a { padding: 10px; min-height: 115px; }
@@ -168,7 +168,7 @@ select { appearance: none; padding: 8px 28px 8px 10px; background-image: url("da
   .site-header nav { gap: 20px; }
 }
 @media (max-width: 760px) {
-  .wrap { width: calc(100% - 40px); }
+  .wrap { width: calc(100% - 48px); }
   .site-header { display: block; padding-block: 22px 17px; }
   .wordmark { font-size: 1.6rem; }
   .site-header nav { margin-top: 15px; gap: 12px 20px; flex-wrap: wrap; }

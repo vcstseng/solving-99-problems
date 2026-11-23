@@ -38,9 +38,10 @@
 .framework-conditions > section { min-width:0; border-top:2px solid var(--teal); }
 .framework-page .framework-conditions h3 { font-size:1.2rem; margin-block:18px; }
 .framework-conditions p { font-size:1rem; }
-.framework-page .case-toc a { line-height:1.7; }
+.framework-page .case-toc a { line-height:1.65; border-left:2px solid transparent; padding-left:12px; }
+.framework-page .case-toc .toc-group > a { padding-block:10px; }
 .framework-page .toc-ready .toc-group:not(.is-active) > .toc-children { display:none; }
-.framework-page .case-toc a[aria-current="location"] { border-left:2px solid var(--teal); padding-left:10px; }
+.framework-page .case-toc a[aria-current="location"] { border-left-color:var(--teal); }
 .governance-map { margin:0 0 30px; padding:24px 20px 18px; border:1px solid var(--rule); }
 .governance-map figcaption { font:600 1rem/1.7 var(--sans); margin-bottom:10px; }
 .governance-map-scroll { overflow-x:auto; max-width:100%; }

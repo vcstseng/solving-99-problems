@@ -24,6 +24,10 @@ test('framework preserves every source paragraph, table, list and heading exactl
 
 test('framework separates four dimensions, five roles, three stages, ten topics, conditions and principles', () => {
   assert.equal(document.sections.length, 8);
+  assert.deepEqual(document.sections.slice(0, 3).map(s => s.tocTitle), [
+    '一、核心概念：遞迴治理', '二、可信度的四個面向', '三、治理角色與關係'
+  ]);
+  assert.ok(document.sections[0].headingHtml.includes('Recursive Governance'));
   const dimensions = document.sections.find(s => s.key === 'trust-dimensions');
   assert.equal((dimensions.html.match(/<tr>/g) || []).length, 5);
   const roles = document.sections.find(s => s.key === 'governance-roles');
