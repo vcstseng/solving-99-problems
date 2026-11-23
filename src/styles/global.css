@@ -27,9 +27,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.4; 
 .skip-link:focus { top: 10px; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 23px 0 26px; position: relative; }
 .site-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(to right, #c12b72 0% 16.666%, #305bd4 16.666% 33.333%, #098c87 33.333% 50%, #5d498c 50% 66.666%, #e5a10c 66.666% 83.333%, #c74620 83.333% 100%); }
-.wordmark { font: 1.75rem/1.2 Georgia, serif; text-decoration: none; white-space: nowrap; }
+.wordmark { font: 1.75rem/1.2 Georgia, serif; text-decoration: none; min-width: 0; text-wrap: balance; }
 .wordmark span { display: inline-block; margin-left: 16px; font: .875rem/1.5 var(--sans); color: var(--muted); letter-spacing: .08em; vertical-align: middle; }
-.site-header nav { display: flex; gap: 28px; font-size: .875rem; }
+.site-header nav { display: flex; flex-shrink: 0; gap: 28px; font-size: .875rem; }
 .site-header nav a { text-decoration: none; padding-block: 8px; }
 .site-header nav a:hover { text-decoration: underline; }
 .intro { padding-block: 45px 0; }
