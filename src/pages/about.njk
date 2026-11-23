@@ -7,52 +7,60 @@ aboutPage: true
 ---
 {% include "components/site-header.njk" %}
 <main class="about-page wrap" id="main">
-  <section class="about-hero" aria-labelledby="about-title">
-    <p class="about-eyebrow">EXPLORING AI CAPABILITIES &amp; GOVERNANCE</p>
-    <h1 id="about-title"><span>探索 AI 的能力</span>與<br class="about-desktop-break">治理邊界</h1>
-    <p class="about-lead">AI 能解決哪些真實問題？當 AI 開始管理其他 AI，我們又該如何確保它的判斷與行動值得信任？</p>
+  <header class="about-page-heading"><h1 id="about-title">關於專案</h1></header>
+  <section class="about-why about-section" aria-labelledby="why-title">
+    <p class="about-eyebrow">01 — WHY</p>
+    <h2 id="why-title">為什麼開始？</h2>
+    <div class="about-prose">
+      <p>AI 已經能完成越來越多過去需要人類處理的工作。但能產生答案，不代表真正解決了問題；能完成任務，也不代表結果可靠。</p>
+      <p>當 AI 開始檢查、評分、批准，甚至管理其他 AI，問題又多了一層：誰來確認這些管理者本身值得信任？</p>
+      <p>這個專案從這兩個問題出發，探索 AI 的實際能力，以及隨之而來的治理挑戰。</p>
+    </div>
   </section>
 
-  <section class="about-directions" aria-labelledby="directions-title">
-    <div class="about-section-label"><h2 id="directions-title">兩個探索方向</h2></div>
+  <section class="about-directions about-section" aria-labelledby="directions-title">
+    <p class="about-eyebrow">02 — WHAT</p>
+    <h2 id="directions-title">兩個探索方向</h2>
     <div class="direction-grid">
       <section class="direction" aria-labelledby="problems-direction">
-        <header class="direction-heading"><p class="about-eyebrow">01 — SOLVING 99 PROBLEMS</p><h3 id="problems-direction">99 個問題，AI 能解決多少？</h3></header>
+        <header class="direction-heading"><h3 id="problems-direction">Solving 99 Problems</h3><p class="direction-question">99 個問題，AI 能解決多少？</p></header>
         <div class="direction-body">
-          <p>從具體問題出發，探索可能的 AI 解法，透過實作與測試，比較 AI 與既有方法的效果，找出能力與限制。</p>
-          <h4>涵蓋範圍</h4>
-          <p>{{ research.businessDomains.length }} 個商業領域・{{ research.stats.business }} 題<br>{{ research.aiDomains.length }} 個 AI 應用分類・{{ research.stats.ai }} 題</p>
-          <h4>探索涉及的技術</h4>
-          <p>LLM、RAG、AI Agent、流程自動化、資料分析、文件處理與多代理協作等。</p>
-          <div class="direction-entry"><p class="direction-stats">{{ research.stats.total }} 個問題｜{{ research.stats.completed }} 個已完成探索｜{{ research.stats.pending }} 個尚待探索</p><a href="/#library">探索 99 Problems <span aria-hidden="true">→</span></a></div>
+          <p>從商業情境與 AI 應用出發，整理 99 個問題，探索可能的解決方法，透過實作、測試與比較，了解 AI 在不同情境下的能力與限制。</p>
+          <p>涵蓋 10 個商業領域、6 個 AI 應用分類，涉及 LLM、RAG、AI Agent、流程自動化、資料分析等技術。</p>
+          <div class="direction-entry"><a href="/#library">探索 99 Problems <span aria-hidden="true">→</span></a></div>
         </div>
       </section>
       <section class="direction direction-governance" aria-labelledby="governance-direction">
-        <header class="direction-heading"><p class="about-eyebrow">02 — GOVERNING AI</p><h3 id="governance-direction">誰來管理那個管理 AI 的 AI？</h3></header>
+        <header class="direction-heading"><h3 id="governance-direction">Governing AI</h3><p class="direction-question">誰來管理那個管理 AI 的 AI？</p></header>
         <div class="direction-body">
-          <p>當 AI 開始檢查、評分、批准或阻止其他 AI 的行動，管理者本身是否值得信任？</p>
-          <p>以遞迴治理（Recursive Governance）為核心，從能力、獨立性、授權與可問責性出發，建立檢視 AI 管理機制的框架。</p>
-          <div class="direction-entry"><p class="direction-stats">4 個可信度面向｜3 個階段｜10 個治理主題</p><a href="/ai-managing-ai/">探索 AI 元治理框架 <span aria-hidden="true">→</span></a></div>
+          <p>當 AI 開始監督其他 AI，如何確認它具備足夠的能力、獨立性與適當權限？如果管理機制本身失效，又該由誰負責？</p>
+          <p>以遞迴治理（Recursive Governance）為核心，建立 AI 元治理框架，從四個可信度面向與十個治理主題，探索 AI 管理機制的可信度與有效性。</p>
+          <div class="direction-entry"><a href="/ai-managing-ai/">探索 AI 元治理框架 <span aria-hidden="true">→</span></a></div>
         </div>
       </section>
     </div>
   </section>
 
   <section class="about-connection about-section" aria-labelledby="connection-title">
-    <p class="about-eyebrow">WHERE CAPABILITY MEETS GOVERNANCE</p>
-    <h2 id="connection-title">從 AI 能做什麼，到如何確保它做得可靠</h2>
-    <p class="about-section-intro">99 Problems 探索 AI 能否有效解決問題；Governing AI 則檢視 AI 系統的監督與管理機制。兩個方向透過實際問題與驗證相互連結。</p>
+    <p class="about-eyebrow">03 — CONNECTION</p>
+    <h2 id="connection-title">能力與治理，為什麼需要一起看？</h2>
+    <div class="about-prose">
+      <p>AI 能解決問題，不代表它值得完全信任。</p>
+      <p>同樣地，替 AI 增加一個審查者、管理者或控制機制，也不代表系統就變得更可靠。</p>
+      <p><strong>99 Problems 提供具體問題與失效情境；Governing AI 提供檢視管理機制的角度。</strong></p>
+      <p>兩者相互連結：</p>
+    </div>
     <ol class="connection-grid">
-      <li><h3><span aria-hidden="true">1</span>從問題發現治理需求</h3><p>透過 AI 在任務中的錯誤、不一致與失效情境，辨識需要監督與控制的地方。</p></li>
+      <li><h3><span aria-hidden="true">1</span>從問題發現治理需求</h3><p>透過實作中出現的錯誤、不一致與失效情境，辨識哪些地方需要監督與控制。</p></li>
       <li><h3><span aria-hidden="true">2</span>以治理檢視解決方案</h3><p>從獨立審查、權限邊界、確定性控制與證據保存等角度，檢視 AI 解決方案的可靠性。</p></li>
-      <li><h3><span aria-hidden="true">3</span>讓能力與治理共同接受驗證</h3><p>不只測試 AI 能否完成任務，也檢驗治理機制是否真正發揮作用，以及付出的成本是否合理。</p></li>
+      <li><h3><span aria-hidden="true">3</span>讓能力與治理共同接受驗證</h3><p>不只測試 AI 能否完成任務，也檢驗治理機制是否發揮作用，以及所付出的成本是否合理。</p></li>
     </ol>
   </section>
 
   <section class="about-evidence about-section" aria-labelledby="evidence-title">
-    <p class="about-eyebrow">FROM QUESTIONS TO EVIDENCE</p>
+    <p class="about-eyebrow">04 — HOW</p>
     <h2 id="evidence-title">從問題到證據</h2>
-    <p class="about-section-intro">AI 能否產生答案，不等於問題已經解決。透過以下方式，逐步檢驗解決方案與治理機制的有效性。</p>
+    <p class="about-section-intro">AI 能產生答案，不代表問題已被解決；建立治理機制，也不代表系統因此更可靠。兩者都需要證據來檢驗。</p>
     <dl class="evidence-grid">
       <div><dt>問題定義</dt><dd>釐清情境、既有方法、假設與評估標準。</dd></div>
       <div><dt>實驗與驗證</dt><dd>透過測試、比較與反例，檢驗能力與限制。</dd></div>
