@@ -6,6 +6,7 @@
     <meta name="description" content="{{ description or '99 個商業問題，AI 能解決多少？從商業問題出發，探索 AI 解法，透過實作與測試，看看哪些真的有效。' | escape }}">
     <title>{{ title | escape }}</title>
     <link rel="stylesheet" href="/styles/global.css">
+    {% if aboutPage %}<link rel="stylesheet" href="/styles/about.css">{% endif %}
     {% if detailPage %}<link rel="stylesheet" href="/styles/problem-detail.css">{% endif %}
     {% if engineeringPage %}<link rel="stylesheet" href="/styles/engineering.css">{% endif %}
     {% if frameworkPage %}<link rel="stylesheet" href="/styles/framework.css">{% endif %}

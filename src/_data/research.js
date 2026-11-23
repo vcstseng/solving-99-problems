@@ -38,7 +38,14 @@ export default function () {
     business: definitions.find(p => p.domain === name).group === "business",
     color: palettes[name][0], foreground: palettes[name][1]
   }));
-  return { problems, domains, businessDomains: domains.filter(d => d.business),
+  const stats = {
+    total: problems.length,
+    completed: problems.filter(p => p.completed).length,
+    pending: problems.filter(p => !p.completed).length,
+    business: problems.filter(p => p.group === "business").length,
+    ai: problems.filter(p => p.group !== "business").length
+  };
+  return { problems, domains, stats, businessDomains: domains.filter(d => d.business),
     aiDomains: domains.filter(d => !d.business),
     featured: problems.find(p => p.id === "CS07"),
     selected: ["P02", "DEV04", "L06"].map(id => problems.find(p => p.id === id)),

@@ -19,6 +19,7 @@ npm run build
 
 ```text
 src/pages/index.njk                 首頁
+src/pages/about.njk                 關於專案：兩個探索方向與驗證方式
 src/pages/case.njk                  八個案例共用的 L2 版型
 src/_lib/l2.js                      Markdown 解析、章節與目錄產生
 src/_data/l2Registry.json           明確 ID／檔名對應及啟用範圍

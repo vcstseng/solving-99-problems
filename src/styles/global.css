@@ -32,6 +32,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.4; 
 .site-header nav { display: flex; flex-shrink: 0; gap: 28px; font-size: .875rem; }
 .site-header nav a { text-decoration: none; padding-block: 8px; }
 .site-header nav a:hover { text-decoration: underline; }
+.site-header nav a[aria-current="page"] { color: var(--teal); text-decoration: underline; text-decoration-thickness: 2px; }
 .intro { padding-block: 45px 0; }
 .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: start; }
 .eyebrow { font-size: .75rem; letter-spacing: .14em; font-weight: 600; }
@@ -170,7 +171,7 @@ select { appearance: none; padding: 8px 28px 8px 10px; background-image: url("da
   .wrap { width: calc(100% - 40px); }
   .site-header { display: block; padding-block: 22px 17px; }
   .wordmark { font-size: 1.6rem; }
-  .site-header nav { margin-top: 15px; gap: 28px; }
+  .site-header nav { margin-top: 15px; gap: 12px 20px; flex-wrap: wrap; }
   .site-header nav a { padding-block: 8px; }
   .intro { padding-top: 30px; }
   h1 { font-size: clamp(2rem, 7.3vw, 3rem); margin-top: 13px; line-height: 1.5; }
