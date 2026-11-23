@@ -1,3 +1,10 @@
 {
-  "CS07": { "file": "CS07_L3.md", "enabled": true }
+  "CS07": { "file": "CS07_L3.md", "enabled": true },
+  "P02": { "file": "P02_L3.md", "enabled": true },
+  "DEV04": { "file": "DEV04_L3.md", "enabled": true },
+  "L06": { "file": "L06_L3.md", "enabled": true },
+  "S01": { "file": "S01_L3.md", "enabled": true },
+  "CS02": { "file": "CS02_L3.md", "enabled": true },
+  "VER02": { "file": "VER02_L3.md", "enabled": true },
+  "VER06": { "file": "VER06_L3.md", "enabled": true }
 }

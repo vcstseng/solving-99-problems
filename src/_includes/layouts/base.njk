@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/styles/global.css">
     {% if detailPage %}<link rel="stylesheet" href="/styles/problem-detail.css">{% endif %}
     {% if engineeringPage %}<link rel="stylesheet" href="/styles/engineering.css">{% endif %}
+    {% if engineeringPage and investigation.hasMath %}<link rel="stylesheet" href="/assets/vendor/katex/katex.min.css">{% endif %}
   </head>
   <body id="top">
     <a class="skip-link" href="#main">跳至主要內容</a>

@@ -27,6 +27,9 @@
 .engineering-page .section-prose th { border-top:1px solid var(--rule); }
 .engineering-page .section-prose pre { max-width:100%; overflow-x:auto; white-space:pre; font: .9375rem/1.8 Consolas,monospace; padding:20px; }
 .engineering-page .section-prose pre code { padding:0; background:transparent; overflow-wrap:normal; }
+.equation { max-width:100%; overflow-x:auto; padding:12px 4px; margin-block:28px; }
+.equation .katex-display { margin:0; }
+.equation .katex-display > .katex { text-align:left; }
 .engineering-page .case-toc a { font-size:.875rem; line-height:1.75; padding-block:9px; }
 .engineering-page .case-toc .toc-children { margin-bottom:14px !important; }
 .engineering-page .toc-ready .toc-group:not(.is-active) > .toc-children { display:none; }

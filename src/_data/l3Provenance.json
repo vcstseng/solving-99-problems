@@ -2,5 +2,33 @@
   "CS07": {
     "file": "CS07_L3.md",
     "sha256": "1ad38d5b4a946d4f97e4744329f0c959dbbef080d8c35283e44ecd0b91fe20f9"
+  },
+  "P02": {
+    "file": "P02_L3.md",
+    "sha256": "28e1cf5785624241d904f5adabb657e49d6a8c5fcdb224cc9f2696fcb2928e46"
+  },
+  "DEV04": {
+    "file": "DEV04_L3.md",
+    "sha256": "e74c4c63764a49573de251bce7f8c0c5b73a259d315c556be6733c1672100ee9"
+  },
+  "L06": {
+    "file": "L06_L3.md",
+    "sha256": "aae43347c0a211a677f98bcb22ac4898c618d15050afcb6bed9c39f7bfb07880"
+  },
+  "S01": {
+    "file": "S01_L3.md",
+    "sha256": "f98e4d5a044ca2c437fc478a0da3f38188134f7e9c987e8022882fd446cef95b"
+  },
+  "CS02": {
+    "file": "CS02_L3.md",
+    "sha256": "ee48ee54ae430c274aa732d906ae618fb3134a4fc53e9cffd22bf0ad47d7dfc6"
+  },
+  "VER02": {
+    "file": "VER02_L3.md",
+    "sha256": "f43ea84aa6379f35fc2b93bd41e8411d471af3b1a422cb42d1e589dfea5775f7"
+  },
+  "VER06": {
+    "file": "VER06_L3.md",
+    "sha256": "6ae3c13444a7e65be9097e885086548d5a4fc7decf3a921447ac4ca98db63b6d"
   }
 }

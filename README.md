@@ -1,6 +1,6 @@
 # Solving 99 Problems｜AI 解題實錄
 
-獨立的靜態網站專案。首頁包含專案介紹、案例卡片及可搜尋、組合篩選、分頁的 99 題問題庫。已完成八個 L2：CS07、P02、CS02、DEV04、L06、S01、VER02、VER06，全部使用同一套 Markdown Renderer。目前另提供 CS07 工程深讀，其他案例尚未啟用。Hero 以領域色塊中的完整標題為主，識別碼縮小。
+獨立的靜態網站專案。首頁包含專案介紹、案例卡片及可搜尋、組合篩選、分頁的 99 題問題庫。已完成八個 L2：CS07、P02、CS02、DEV04、L06、S01、VER02、VER06，全部使用同一套 Markdown Renderer。八個案例均另提供工程深讀頁面。Hero 以領域色塊中的完整標題為主，識別碼縮小。
 
 ## 開發與建置
 
@@ -58,14 +58,14 @@ Anchor 採穩定的章節編號或語意名稱，例如 `business-01`、`busines
 
 ## L3 本機預覽與內容更新
 
-目前只啟用 CS07：`/problems/cs07/engineering/`，L2 頁尾提供往返入口。`src/_data/l3Registry.json` 明確對應 ID 與檔案；`src/content/l3/` 保留原始 Markdown 副本及匯入校驗碼。章節、表格與目錄依原文產生，不重新摘要研究內容。公開介面使用中文章節／段落標籤與中文主標，移除內部 L3／L4 編號；這些顯示轉換集中於 `src/_lib/l3.js`，不修改 Markdown、研究數字或驗收結論。
+八個案例均已啟用工程深讀，例如 `/problems/cs07/engineering/`、`/problems/p02/engineering/`；各 L2 頁尾提供往返入口。`src/_data/l3Registry.json` 明確對應 ID 與檔案；`src/content/l3/` 保留原始 Markdown 副本及匯入校驗碼。章節、表格與目錄依原文產生，不重新摘要研究內容。公開介面使用中文章節／段落標籤與中文主標，移除內部 L3／L4 編號；這些顯示轉換集中於 `src/_lib/l3.js`，不修改 Markdown、研究數字或驗收結論。
 
 ```sh
 npm run sync:l3 -- --source "<L3 Markdown directory>"
 npm run dev
 ```
 
-可用不進版本控制的 `l3-source.local` 或 `L3_SOURCE_DIR` 指定本機來源，開發時自動同步。沒有本機設定時，建置使用專案內副本。Mermaid 使用本機提供的 `@mermaid-js/tiny` 渲染 SVG，支援放大；載入失敗或停用 JavaScript 時仍保留原始碼。尚未公開的研究相對路徑不產生 L4 連結。啟用 JavaScript 時目錄只展開目前章節的小節；停用時全部目錄仍可使用。目前只驗證 CS07，不宣稱其他 L3 案例已支援或已發布。
+可用不進版本控制的 `l3-source.local` 或 `L3_SOURCE_DIR` 指定本機來源，開發時自動同步。沒有本機設定時，建置使用專案內副本。Mermaid 使用本機提供的 `@mermaid-js/tiny` 渲染 SVG，支援放大；載入失敗或停用 JavaScript 時仍保留原始碼。尚未公開的研究相對路徑不產生 L4 連結。啟用 JavaScript 時目錄只展開目前章節的小節；停用時全部目錄仍可使用。P02 的原始 TeX 公式由 KaTeX 在建置時轉成 HTML／MathML，字型與樣式由網站本身提供，不呼叫外部服務。八個案例共用同一版型，支援不同章節數、表格與程式碼。
 
 ## 原始資料
 

@@ -1,19 +1,30 @@
 import MarkdownIt from 'markdown-it';
+import katex from 'katex';
 
 // Preserve the source document; public labels are localized only at render time.
 const publicReplacements = [
   ['原始 L3', '原始工程文件'],
+  ['L3 · ', ''], ['L4 不公開', '原始證據不公開'],
   ['網站 L3 技術深讀', '網站技術深讀'], ['可存取的 L4 證據', '可存取的原始證據'],
   ['對應 L4 的原始資料入口', '原始資料入口'], ['L4 上線時', '原始證據公開時'], ['此 L3 是', '本文是'],
   ['Engineering Map', '工程流程'], ['Evidence Index', '證據索引'],
   ['Observed｜已觀察。', '已觀察：'], ['Interpretation｜有限推論。', '有限推論：'],
   ['Not established｜尚未證明。', '尚未證明：'], ['Engineering question.', '研究問題：'],
+  ['Not established：', '尚未證明：'], ['Not tested：', '尚未測試：'], ['Inferred：', '有限推論：'],
+  ['Engineering implication：', '工程意義：'], ['Limit：', '限制：'],
+  ['Engineering finding.', '工程發現：'], ['Boundary｜不能推論。', '不能推論：'],
+  ['Limitations｜證據限制。', '證據限制：'], ['Not measured｜未量測。', '尚未量測：'],
+  ['Engineering intervention｜實際修訂。', '實際修訂：'], ['Inferred｜工程意義', '工程意義'],
+  ['Implementation.', '實作方式：'], ['Observed evidence.', '實際觀察：'], ['Interpretation.', '有限推論：'],
+  ['Critical distinction.', '重要區分：'], ['Observed.', '已觀察：'],
+  ['Reproducibility boundary.', '重現邊界：'], ['Recorded runtime, not a benchmark.', '執行紀錄（非效能基準）：'],
   ['Engineering conclusion.', '工程結論：'], ['Additional observation.', '補充觀察：'],
   ['Experiment.', '實驗方式：'], ['Observed：', '已觀察：'], ['Interpretation：', '有限推論：'],
   ['實作邊界。', '實作邊界：'], ['固定條件。', '固定條件：'],
   ['Context：', '輸入內容：'], ['Evidence：', '證據來源：'],
   ['Engineering Deep Dive', '工程深讀'], ['Security & Governance Review', '安全與治理審查'],
-  ['Research Closed', '研究已結案'], ['Worker AI Review', '執行 AI 審查'], ['Human Acceptance PENDING', '人工驗收待完成']
+  ['Research Closed', '研究已結案'], ['Worker AI Review', '執行 AI 審查'], ['Human Acceptance PENDING', '人工驗收待完成'],
+  ['Human Final Acceptance PENDING', '最終人工驗收待完成']
 ];
 export function publicText(text) {
   for (const [original, label] of publicReplacements) text = text.replaceAll(original, label);
@@ -21,7 +32,19 @@ export function publicText(text) {
     .replace(/ 工程深讀 /g, '工程深讀').replace(/ 安全與治理審查/g, '安全與治理審查');
 }
 function presentationTokens(tokens) {
-  return tokens.map(token => {
+  const result = [];
+  for (let index = 0; index < tokens.length; index++) {
+    const token = tokens[index];
+    const formula = token.type === 'paragraph_open' && tokens[index + 1]?.type === 'inline'
+      ? tokens[index + 1].content.match(/^\\\[\s*\n([\s\S]*?)\n\s*\\\]$/) : null;
+    if (formula && tokens[index + 2]?.type === 'paragraph_close') {
+      const math = Object.assign(Object.create(Object.getPrototypeOf(token)), token);
+      math.type = 'html_block';
+      math.content = `<div class="equation" role="region" aria-label="數學公式，可水平捲動" tabindex="0">${katex.renderToString(formula[1], { displayMode:true, throwOnError:true, trust:false, output:'htmlAndMathml' })}</div>\n`;
+      result.push(math);
+      index += 2;
+      continue;
+    }
     const copy = Object.assign(Object.create(Object.getPrototypeOf(token)), token);
     copy.attrs = token.attrs?.map(pair => [...pair]) || null;
     if (token.children) {
@@ -34,8 +57,9 @@ function presentationTokens(tokens) {
       }
     }
     if (copy.type === 'text') copy.content = publicText(copy.content);
-    return copy;
-  });
+    result.push(copy);
+  }
+  return result;
 }
 export const l3Markdown = new MarkdownIt({ html:false, linkify:false, typographer:false });
 const escape = l3Markdown.utils.escapeHtml;
@@ -115,6 +139,7 @@ export function parseL3(source, expectedId, { publicLabels = true } = {}) {
   const render = items => l3Markdown.renderer.render(publicLabels ? presentationTokens(items) : items, l3Markdown.options, {});
   const display = text => publicLabels ? publicText(text) : text;
   return { id:expectedId, fullTitle, title:match[2],
+    hasMath:body.some(t => t.type === 'inline' && /^\\\[\s*\n[\s\S]*\n\s*\\\]$/.test(t.content)),
     displayTitle:match[2].replace(/^Engineering Investigations[：:]\s*/, ''),
     introductionHtml:render(introduction), sections:sections.map(s => ({ ...s, sourceTitle:s.title, title:display(s.title),
       toc:s.toc.map(h => ({ ...h, title:display(h.title) })), headingHtml:render(s.headingTokens), html:render(s.tokens) })) };

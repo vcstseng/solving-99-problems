@@ -9,6 +9,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/styles": "styles" });
   eleventyConfig.addPassthroughCopy({ "node_modules/@mermaid-js/tiny/dist/mermaid.tiny.js": "assets/vendor/mermaid.tiny.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/katex/dist/katex.min.css": "assets/vendor/katex/katex.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/katex/dist/fonts": "assets/vendor/katex/fonts" });
   // Research material is published only through explicitly authored pages.
   eleventyConfig.ignores.add("src/content/**");
   eleventyConfig.addWatchTarget("./src/content/l2/");
